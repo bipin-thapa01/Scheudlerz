@@ -1,18 +1,16 @@
-import { useState, useEffect } from "react";
-import AddBirth from "./AddBirth";
-import ShowBirthData from "./ShowBirthData";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Birth from '../Birth/Birth';
+import Quotes from '../Quotes/Quotes';
 
-function Homepage() {
-  let [birthDate, getBirthDate] = useState("");
-  useEffect(()=>{
-    getBirthDate(localStorage.getItem('birthData'));
-  }, []);
-  let content = (birthDate === null || birthDate === "") ? <AddBirth getBirthDate={getBirthDate}/> : <ShowBirthData birthDate = {birthDate}/>;
+function Homepage(){
   return (
-    <>
-      {content}
-    </>
-  )
+    <BrowserRouter>
+      <div></div>
+      <Routes>
+        <Route path='/' element={<Birth/>}></Route>
+        <Route path='/quotes' element={<Quotes/>}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
 export default Homepage;
