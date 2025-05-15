@@ -1,0 +1,26 @@
+#result-container{
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#result{
+  color: rgb(219, 212, 212);
+  font-size: 80px;
+  font-weight: 700;
+}
+
+#format{
+  height: 30px;
+  width: 120px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+#submit-format{
+  height: 30px;
+  width: 120px;
+  font-size: 20px;
+}

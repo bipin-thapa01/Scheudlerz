@@ -9,3 +9,8 @@
 #nav i{
   font-size: 50px;
 }
+
+#github{
+  cursor: pointer;
+  color: white;
+}

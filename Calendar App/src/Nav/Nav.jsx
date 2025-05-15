@@ -2,7 +2,7 @@ import './Nav.css'
 
 function Nav() {
   let redirect = () =>{
-      window.location.href = 'https://github.com/bipin-thapa01';
+      window.open('https://github.com/bipin-thapa01', '_blank');
   }
 
   return (
