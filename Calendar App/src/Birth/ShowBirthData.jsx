@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import "./ShowBirthData.css";
 
 function ShowBirthData({birthDate}){
@@ -28,6 +29,10 @@ function ShowBirthData({birthDate}){
     }
   },[new Date()]);
 
+  const deleteRecord = ()=>{
+    localStorage.removeItem('birthData');
+  };
+
   return (
     <div id="result-container">
       <div id="result-text-container">
@@ -35,14 +40,16 @@ function ShowBirthData({birthDate}){
         <div id="result-metric">{' ' + format}</div>
       </div>
       <div id="normal-text">has passed since you were born</div>
-      <div>
+      <div id="format-and-delete-container">
         <select name="format" id="format">
           <option value="Days">Days</option>
           <option value="Hours">Hours</option>
           <option value="Minutes">Minutes</option>
           <option value="Seconds">Seconds</option>
         </select>
-        
+        <Link to='/quotes'>
+          <i class="fa-solid fa-trash" id="delete-button" onClick={deleteRecord}></i>
+        </Link>
       </div>
     </div>
   )

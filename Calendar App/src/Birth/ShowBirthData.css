@@ -27,15 +27,23 @@
   color: white;
 }
 
-#format{
-  height: 30px;
-  width: 120px;
-  font-size: 20px;
-  padding-left: 10px;
+#format-and-delete-container{
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
 }
 
-#submit-format{
+#format{
   height: 30px;
-  width: 120px;
+  width: 80px;
+  font-size: 15px;
+}
+
+#delete-button{
+  color: white;
   font-size: 20px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 4px;
+  cursor: pointer;
 }
