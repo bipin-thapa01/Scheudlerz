@@ -8,11 +8,8 @@ function ShowBirthData({birthDate}){
   let [birth, getBirth] = useState(new Date(birthDate));
 
   useEffect(()=>{
-    getResult((present - birth)/ (1000*60*60*24));
-  },[present, birth]);
-
-  function changeFormat(){
     let format = document.getElementById('format').value;
+    getPresent(new Date());
     if(format === 'Days'){
       getResult((present - birth)/ (1000*60*60*24));
       getFormat("Days");
@@ -29,18 +26,24 @@ function ShowBirthData({birthDate}){
       getResult((present - birth)/ (1000));
       getFormat("Seconds");
     }
-  }
+  },[new Date()]);
 
   return (
     <div id="result-container">
-      <div id="result">{Math.ceil(result) + " " + format}</div>
-      <select name="format" id="format">
-        <option value="Days">Days</option>
-        <option value="Hours">Hours</option>
-        <option value="Minutes">Minutes</option>
-        <option value="Seconds">Seconds</option>
-      </select>
-      <button id="submit-format" onClick={()=>{changeFormat()}}>Change</button>
+      <div id="result-text-container">
+        <div id="result-number">{Math.ceil(result)}</div>
+        <div id="result-metric">{' ' + format}</div>
+      </div>
+      <div id="normal-text">has passed since you were born</div>
+      <div>
+        <select name="format" id="format">
+          <option value="Days">Days</option>
+          <option value="Hours">Hours</option>
+          <option value="Minutes">Minutes</option>
+          <option value="Seconds">Seconds</option>
+        </select>
+        
+      </div>
     </div>
   )
 }

@@ -6,10 +6,25 @@
   justify-content: space-around;
 }
 
-#result{
+#result-text-container{
   color: rgb(219, 212, 212);
-  font-size: 80px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+#result-number{
+  font-size: 65px;
+  font-weight: 600;
+}
+
+#result-metric{
+  font-size: 20px;
   font-weight: 700;
+}
+
+#normal-text{
+  color: white;
 }
 
 #format{
