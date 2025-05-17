@@ -1,36 +1,43 @@
 import { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
+import AddBirth from "./AddBirth";
 import "./ShowBirthData.css";
 
 function ShowBirthData({birthDate}){
-  let [present , getPresent] = useState(new Date());
-  let [format, getFormat] = useState('');
-  let [result, getResult] = useState("");
+  let [format, getFormat] = useState("Days");
   let [birth, getBirth] = useState(new Date(birthDate));
+  let [result, getResult] = useState((new Date() - birth)/ (1000*60*60*24));
 
-  useEffect(()=>{
-    let format = document.getElementById('format').value;
-    getPresent(new Date());
-    if(format === 'Days'){
-      getResult((present - birth)/ (1000*60*60*24));
-      getFormat("Days");
+  useEffect(() => {
+    let interval;
+    if (format === "Seconds") {
+      interval = setInterval(() => {
+        getResult(prev => prev + 1);
+      }, 1000);
+    } 
+    else if (format === "Minutes") {
+      interval = setInterval(() => {
+        getResult(prev => prev + 1);
+      }, 60000);
     }
-    else if(format === 'Hours'){
-      getResult((present - birth)/ (1000*60*60));
-      getFormat("Hours");
-    }
-    else if(format === 'Minutes'){
-      getResult((present - birth)/ (1000*60));
-      getFormat("Minutes")
-    }
-    else if(format === 'Seconds'){
-      getResult((present - birth)/ (1000));
-      getFormat("Seconds");
-    }
-  },[new Date()]);
+
+    return () => clearInterval(interval);
+  }, [format]);
+
+  const changeFormat = (event) => {
+    let newFormat = event.target.value;
+    getFormat(newFormat);
+    let divisor = newFormat === "Days" ? 1000 * 60 * 60 * 24
+                : newFormat === "Hours" ? 1000 * 60 * 60
+                : newFormat === "Minutes" ? 1000 * 60
+                : 1000;
+  
+    getResult((new Date() - birth) / divisor);
+  };
 
   const deleteRecord = ()=>{
     localStorage.removeItem('birthData');
+    
   };
 
   return (
@@ -41,15 +48,13 @@ function ShowBirthData({birthDate}){
       </div>
       <div id="normal-text">has passed since you were born</div>
       <div id="format-and-delete-container">
-        <select name="format" id="format">
+        <select name="format" id="format" onChange={changeFormat}>
           <option value="Days">Days</option>
           <option value="Hours">Hours</option>
           <option value="Minutes">Minutes</option>
           <option value="Seconds">Seconds</option>
         </select>
-        <Link to='/quotes'>
-          <i class="fa-solid fa-trash" id="delete-button" onClick={deleteRecord}></i>
-        </Link>
+        <i class="fa-solid fa-trash" id="delete-button" onClick={deleteRecord}></i>
       </div>
     </div>
   )
