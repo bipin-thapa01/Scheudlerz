@@ -47,3 +47,10 @@
   padding: 4px;
   cursor: pointer;
 }
+
+@media (max-width: 620px){
+  #result-number{
+    font-size: 40px;
+    font-weight: 600;
+  }
+}

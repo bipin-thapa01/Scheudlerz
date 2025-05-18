@@ -31,7 +31,9 @@ function ShowBirthData({birthDate, getBirthDate}){
                 : newFormat === "Hours" ? 1000 * 60 * 60
                 : newFormat === "Minutes" ? 1000 * 60
                 : 1000;
-  
+    if((new Date() - birth) < 0){
+      alert("Birth Date Cannot")
+    }
     getResult((new Date() - birth) / divisor);
   };
 
