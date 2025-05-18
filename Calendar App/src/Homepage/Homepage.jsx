@@ -10,7 +10,7 @@ function Homepage(){
     getPresentUrl(window.location.href);
   },10);
   useEffect(()=>{
-    if(presentUrl === '' || presentUrl === 'http://localhost:5173/'){
+    if(presentUrl === '' || presentUrl === 'https://birthcalcz.netlify.app/'){
       document.querySelector('.link1').style.backgroundColor = 'gray';
       document.querySelector('.link2').style.backgroundColor = '#282828';
     }
