@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import AddBirth from "./AddBirth";
 import "./ShowBirthData.css";
 
-function ShowBirthData({birthDate}){
+function ShowBirthData({birthDate, getBirthDate}){
   let [format, getFormat] = useState("Days");
   let [birth, getBirth] = useState(new Date(birthDate));
   let [result, getResult] = useState((new Date() - birth)/ (1000*60*60*24));
@@ -37,7 +37,7 @@ function ShowBirthData({birthDate}){
 
   const deleteRecord = ()=>{
     localStorage.removeItem('birthData');
-    
+    getBirthDate("");
   };
 
   return (

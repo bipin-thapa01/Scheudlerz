@@ -7,7 +7,7 @@ function Homepage() {
   useEffect(()=>{
     getBirthDate(localStorage.getItem('birthData'));
   }, []);
-  let content = (birthDate === null || birthDate === "") ? <AddBirth getBirthDate={getBirthDate}/> : <ShowBirthData birthDate = {birthDate}/>;
+  let content = (birthDate === null || birthDate === "") ? <AddBirth getBirthDate={getBirthDate}/> : <ShowBirthData birthDate = {birthDate} getBirthDate = {getBirthDate}/>;
   return (
     <>
       {content}
