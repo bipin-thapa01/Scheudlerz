@@ -38,7 +38,15 @@
 
 @media (max-width: 400px){
   #main-container{
+    margin: 0px;
     width: 360px;
-    left: calc(50% - 180px);
+    left: calc(50% - 182px);
+  }
+}
+
+@media (max-width: 360px){
+  #main-container{
+    width: 340px;
+    left: calc(50% - 170px);
   }
 }
