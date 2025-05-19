@@ -2,6 +2,10 @@ import "./AddBirth.css"
 
 function AddBirth({ getBirthDate }) {
   function registerBirthDate(value) {
+    if((new Date() - new Date(value))<=0){
+      alert('Birth date cannot be 0 days or negative! Try again');
+      return;
+    }
     getBirthDate(value);
     localStorage.setItem('birthData', value);
   }
